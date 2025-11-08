@@ -1,0 +1,182 @@
+/* Import font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #5DADE2;
+}
+
+/* MENJADI SEPERTI INI */
+.game-container {
+    max-width: 800px; /* Lebar maksimal di desktop (sesuaikan angkanya) */
+    width: 90%;       /* Mengambil 90% lebar layar (agar pas di HP) */
+    /* ... sisa style ... */
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hangman-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hangman-box svg {
+    width: 200px;
+}
+
+/* Style untuk SVG hangman */
+.figure-container line,
+.figure-container circle {
+    stroke: #333;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.figure-part {
+    /* Sembunyikan semua bagian tubuh secara default */
+    display: none;
+}
+
+.word-display {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.word-display li {
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid #000;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 30px;
+}
+
+/* Menampilkan huruf yang sudah ditebak */
+.word-display li.guessed {
+    border-color: transparent;
+}
+
+.guesses-text {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.guesses-text span {
+    font-weight: 600;
+    color: #E74C3C;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 10px;
+}
+
+.keyboard button {
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #AED6F1;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.keyboard button:hover {
+    background: #85C1E9;
+}
+
+/* Style untuk tombol yang sudah diklik (dinonaktifkan) */
+.keyboard button[disabled] {
+    opacity: 0.6;
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* Modal Pop-up */
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Sembunyikan modal secara default */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Tampilkan modal saat game berakhir */
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-modal .content {
+    background: #FFF;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+}
+
+.game-modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.game-modal p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.game-modal p b {
+    font-weight: 600;
+    color: #5DADE2;
+}
+
+.play-again-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #5DADE2;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.play-again-btn:hover {
+    background: #3498DB;
+}
